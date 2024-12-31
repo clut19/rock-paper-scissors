@@ -12,16 +12,32 @@ function getComputerChoice(){
     }
 
     return result;
+
 }
 
-console.log (getComputerChoice());
-console.log (getComputerChoice());
-console.log (getComputerChoice());
-console.log (getComputerChoice());
-console.log (getComputerChoice());
-console.log (getComputerChoice());
-console.log (getComputerChoice());
-console.log (getComputerChoice());
-console.log (getComputerChoice());
-console.log (getComputerChoice());
-console.log (getComputerChoice());
+function getHumanChoice(){
+
+    let a = prompt("Choose 'r', 'p' or 's'");
+
+    let result;
+
+    if (a ==  "r"){
+
+        result = "Rock";
+
+    } else if (a=='p'){
+
+        result = "Paper";
+
+    } else if (a== 's') {
+    
+        result = "Scissors";
+    } else {
+
+        result = "That's not a valid choice.";
+    }
+
+    return result;
+
+}
+
