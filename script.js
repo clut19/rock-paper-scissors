@@ -15,11 +15,9 @@ function getComputerChoice(){
 
 }
 
-function getHumanChoice(){
+function getHumanChoice(a){
 
-    let a = prompt("Choose rock, paper or scissors");
-
-    a = a.toLowerCase();
+    
 
     let result;
 
@@ -46,25 +44,31 @@ function getHumanChoice(){
 
 function playRound (humanChoice, computerChoice) {
 
+    const results = document.querySelector("#results");
+    const human = document.createElement("div");
+    const computer = document.createElement("div");
+    const result = document.createElement("div");
 
-    console.log (humanChoice);
-    console.log (computerChoice);
+    human.textContent = "Your choice was " + humanChoice;
+    computer.textContent = "Rival choice was " + computerChoice;
 
+    let finalResult;
+    
 
     if (humanChoice == "Rock"){
         
         switch (computerChoice){
 
             case "Rock":
-                console.log ("You've tied!");
+                finalResult = "You've tied!";
                 break;
             case "Paper":
                 ++computerScore;
-                console.log ("You've lost!");
+                finalResult = "You've lost!";
                 break;
             case "Scissors":
                 ++humanScore;
-                console.log ("You've won!");
+                finalResult = "You've won!";
                 break;
         }
     } else if (humanChoice == "Paper"){
@@ -73,16 +77,16 @@ function playRound (humanChoice, computerChoice) {
 
             case "Rock":
                 ++humanScore;
-                console.log ("You've won!");
+                finalResult = "You've won!";
                 break;
             
             case "Paper": 
-                console.log ("You've tied!");
+                finalResult = "You've tied!";
                 break;
 
             case "Scissors":
                 ++computerScore;
-                console.log ("You've lost!");
+                finalResult = "You've lost!";
                 break;
         }
     } else if (humanChoice == "Scissors"){
@@ -90,23 +94,29 @@ function playRound (humanChoice, computerChoice) {
         switch (computerChoice){
 
             case "Rock":
-                console.log ("You've lost!");
+                finalResult = "You've lost!";
                 ++computerScore;
                 break;
 
             case "Paper":
-                console.log ("Youve won!");
+                finalResult = "Youve won!";
                 ++humanScore;
                 break;
                 
             case "Scissors":
-                console.log ("You've tied!");
+                finalResult = "You've tied!";
                 break;
         }
     } else {
 
         console.log ("This is not a valid option");
     }
+
+    result.textContent = finalResult;
+    results.appendChild(human);
+    results.appendChild(computer);
+    results.appendChild(result);
+
 }
 
 let humanScore = 0;
@@ -133,4 +143,14 @@ function playGame(){
     }
 
 }
+
+const button = document.querySelector("#buttons");
+button.addEventListener("click", (event)=>{
+    let target = event.target;
+    let playerChoice = getHumanChoice(target.id);
+    let computerChoice = getComputerChoice();
+    playRound (playerChoice, computerChoice);
+});
+
+
 
