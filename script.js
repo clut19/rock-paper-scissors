@@ -48,6 +48,9 @@ function playRound (humanChoice, computerChoice) {
     const human = document.createElement("div");
     const computer = document.createElement("div");
     const result = document.createElement("div");
+    const scoreHuman = document.createElement("div");
+    const scoreComputer = document.createElement("div");
+
 
     human.textContent = "Your choice was " + humanChoice;
     computer.textContent = "Rival choice was " + computerChoice;
@@ -113,36 +116,32 @@ function playRound (humanChoice, computerChoice) {
     }
 
     result.textContent = finalResult;
+    scoreHuman.textContent = "Your score is " + humanScore;
+    scoreComputer.textContent = "Computer score is " + computerScore;
     results.appendChild(human);
     results.appendChild(computer);
     results.appendChild(result);
+    results.appendChild(scoreHuman);
+    results.appendChild(scoreComputer);
+
+    let announceWinner = document.createElement ("div");
+    if (humanScore == 5){
+    announceWinner.textContent = "You're the winner!";
+    } else if (computerScore == 5){
+    announceWinner.textContent = "Computer won, you've lost!";
+    }
+
+    results.appendChild(announceWinner);
 
 }
+
+
+
 
 let humanScore = 0;
 let computerScore = 0;
 
-function playGame(){
 
-    for (i=0; i<5; i++) {
-        let humanSelection = getHumanChoice();
-        if (humanSelection == false) {i--;}
-        let computerSelection = getComputerChoice();
-        playRound (humanSelection, computerSelection);
-
-        console.log("Your score is" + " " + humanScore);
-        console.log ("Computer score is" + " " + computerScore);
-    }
-
-    if (humanScore > computerScore){
-        console.log ("You're the winner of the game!");
-    } else if (humanScore < computerScore){
-        console.log ("You've lost the game.")
-    } else {
-        console.log ("You've tied the game!");
-    }
-
-}
 
 const button = document.querySelector("#buttons");
 button.addEventListener("click", (event)=>{
