@@ -124,4 +124,13 @@ function playGame(){
         console.log ("Computer score is" + " " + computerScore);
     }
 
+    if (humanScore > computerScore){
+        console.log ("You're the winner of the game!");
+    } else if (humanScore < computerScore){
+        console.log ("You've lost the game.")
+    } else {
+        console.log ("You've tied the game!");
+    }
+
 }
+
