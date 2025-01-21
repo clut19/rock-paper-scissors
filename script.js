@@ -32,30 +32,18 @@ function getHumanChoice(a){
     } else if (a== 'scissors') {
     
         result = "Scissors";
-    } else {
-
-        result = "That's not a valid choice.";
-        return false;
     }
 
     return result;
 
 }
 
+
+
 function playRound (humanChoice, computerChoice) {
 
     const results = document.querySelector("#results");
-    const human = document.createElement("div");
-    const computer = document.createElement("div");
-    const result = document.createElement("div");
-    const scoreHuman = document.createElement("div");
-    const scoreComputer = document.createElement("div");
 
-
-    human.textContent = "Your choice was " + humanChoice;
-    computer.textContent = "Rival choice was " + computerChoice;
-
-    let finalResult;
     
 
     if (humanChoice == "Rock"){
@@ -63,15 +51,12 @@ function playRound (humanChoice, computerChoice) {
         switch (computerChoice){
 
             case "Rock":
-                finalResult = "You've tied!";
                 break;
             case "Paper":
                 ++computerScore;
-                finalResult = "You've lost!";
                 break;
             case "Scissors":
                 ++humanScore;
-                finalResult = "You've won!";
                 break;
         }
     } else if (humanChoice == "Paper"){
@@ -80,16 +65,13 @@ function playRound (humanChoice, computerChoice) {
 
             case "Rock":
                 ++humanScore;
-                finalResult = "You've won!";
                 break;
             
             case "Paper": 
-                finalResult = "You've tied!";
                 break;
 
             case "Scissors":
                 ++computerScore;
-                finalResult = "You've lost!";
                 break;
         }
     } else if (humanChoice == "Scissors"){
@@ -97,50 +79,51 @@ function playRound (humanChoice, computerChoice) {
         switch (computerChoice){
 
             case "Rock":
-                finalResult = "You've lost!";
                 ++computerScore;
                 break;
 
             case "Paper":
-                finalResult = "Youve won!";
                 ++humanScore;
                 break;
                 
             case "Scissors":
-                finalResult = "You've tied!";
                 break;
         }
-    } else {
-
-        console.log ("This is not a valid option");
     }
 
-    result.textContent = finalResult;
-    scoreHuman.textContent = "Your score is " + humanScore;
-    scoreComputer.textContent = "Computer score is " + computerScore;
-    results.appendChild(human);
-    results.appendChild(computer);
-    results.appendChild(result);
-    results.appendChild(scoreHuman);
-    results.appendChild(scoreComputer);
+  
+   
 
-    let announceWinner = document.createElement ("div");
+    let announceWinner = document.createElement ("span");
     if (humanScore == 5){
     announceWinner.textContent = "You're the winner!";
+    humanScore = 0;
+    computerScore = 0;
     } else if (computerScore == 5){
     announceWinner.textContent = "Computer won, you've lost!";
+    humanScore = 0;
+    computerScore = 0;
     }
 
     results.appendChild(announceWinner);
+    score1.textContent = humanScore;
+    score2.textContent = computerScore;
+    currentScore1.appendChild(score1);
+    currentScore2.appendChild(score2);
+
 
 }
 
 
 
 
+
 let humanScore = 0;
 let computerScore = 0;
-
+let currentScore1 = document.querySelector("#human");
+let currentScore2 = document.querySelector("#computer");
+let score1 = document.createElement("div");
+let score2 = document.createElement("div");
 
 
 const button = document.querySelector("#buttons");
@@ -149,6 +132,9 @@ button.addEventListener("click", (event)=>{
     let playerChoice = getHumanChoice(target.id);
     let computerChoice = getComputerChoice();
     playRound (playerChoice, computerChoice);
+
+    
+
 });
 
 
