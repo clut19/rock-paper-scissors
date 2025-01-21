@@ -4,19 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    button {
+        border: none;
+        cursor: pointer;
+        appearance: none;
+        background-color: inherit;
+        transition: transform .7s ease-in-out;
+        margin-left:10px;
+      }
+      button:hover{
+        transform: rotate(360deg);
+      }
+
+      div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin:40px;
+      }
+      .text{
+        font-size:60px;
+        color:black;
+      }
+  
+    </style>
 </head>
 <body>
+    <div class="text">Rock, Paper, Scissors</div>
     <div id="buttons">
-        <button id="rock">
-            Rock
+        <button>
+            <img src="./rock-paper-scissors-296854_1280.png" id="rock" width="200" height="200"/>
         </button>
-        <button id="paper">Paper</button>
-        <button id="scissors">Scissors</button>
+        <button>
+                <img src="./rock-paper-scissors-296855_1280.png" id="paper" width="200" height="200"/>
+        </button>
+        <button>
+            <img src="./rock-paper-scissors-296853_1280.png" id="scissors" width="200" height="200"/>
+        </button>
     </div>
-    <script src="./script.js"></script>
     <div id = "results">
-
+        <span id="human">Player score: </span>
+        <div></div>
+        <span id="computer">Computer score:</span>
     </div>
 
+
+
+
+    <script src="./script.js"></script>
 </body>
 </html>
